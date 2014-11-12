@@ -1,0 +1,10 @@
+-r common.txt
+
+## Server
+uwsgi>=2.0,<2.1
+
+## Monitoring
+newrelic>=2.32,<2.33
+
+## Exceptions
+raven>=4

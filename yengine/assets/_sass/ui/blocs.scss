@@ -1,0 +1,22 @@
+.bloc {
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 5px -1px;
+    background: #f5f5f5;
+
+    & + .bloc {
+        margin-top: 1em;
+    }
+
+    &:last-child {
+        margin-bottom: 2em;
+    }
+}
+.bloc__header {
+    padding: 1.5em 2em;
+
+    background: #d0e2e3;
+    color: #6d96a0;
+}
+.bloc__body {
+    padding: 1.5em 2em;
+}

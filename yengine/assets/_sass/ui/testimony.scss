@@ -1,0 +1,23 @@
+.testimony-list {
+    list-style: none;
+    padding-left: 0px;
+    max-width: 600px;
+    margin: 0 auto 3em auto;
+}
+.testimony-item {
+    text-align: center;
+
+    blockquote {
+        display: inline;
+        line-height: 1.6em;
+
+        &:before {
+            content: '«';
+            display: inline;
+        }
+        &:after {
+            content: '»';
+            display: inline;
+        }
+    }
+}

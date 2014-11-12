@@ -1,0 +1,130 @@
+.pickers-wrapper {
+    margin-bottom: 2em;
+}
+
+.datepicker-wrapper {
+
+    .datepicker {
+        padding: 0px;
+
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    .datepicker-inline {
+        width: 243px;
+    }
+
+    table {
+        background: #fff;
+
+        thead {
+            color: #4b7f8d;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .dow {
+            color: #94aeb6;
+            font-weight: 400;
+            font-size: 0.8em;
+            text-transform: capitalize;
+        }
+
+        tr {
+
+            &:last-child {
+                td.day {
+                    border-bottom: none;
+                }
+            }
+
+            td.day {
+                border-radius: 0px;
+                // border: 2px solid rgba(167, 167, 167, 0.15);
+                border: 2px solid #d5e5e9;
+                font-size: 0.9em;
+                padding: 7px 9px;
+
+                &:first-child {
+                    border-left: none;
+                }
+                &:last-child {
+                    border-right: none;
+                }
+
+                &, &.today {
+                    background-color: transparent;
+                    color: #8fabb4;
+                }
+
+                &.old, &.disabled {
+                    background-color: #e1f1f6;
+                    color: rgba(0, 0, 0, 0.1);
+                }
+
+                &.active {
+                    border-color: #d5e5e9;
+                    background-color: #4b7f8d;
+                    color: #fff;
+                }
+
+                &:hover, &.active:hover, &.today:hover {
+                    border-color: #d5e5e9;
+                    background-color: #3a616c;
+                    color: #8fabb4;
+                }
+            }
+        }
+    }
+}
+
+.timepicker-wrapper {
+
+    .timepicker {
+
+        .head {
+            border-radius: 4px;
+            padding: 0.5em 1em;
+            margin-bottom: 0.5em;
+
+            background: #fff;
+            color: #4b7f8d;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        .range {
+            padding: 3px;
+
+            &:first-child {
+                padding-left: 0px;
+            }
+            &:last-child {
+                padding-right: 0px;
+            }
+
+            .select-range {
+                display: block;
+                border-radius: 4px;
+                padding: 0.6em 0.3em;
+
+                cursor: pointer;
+                background: #d0e6ec;
+                color: #6d97a3;
+                font-weight: 400;
+                text-align: center;
+
+                &.active, &:hover {
+                    background: #4b7f8d;
+                    color: #fff;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
