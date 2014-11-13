@@ -67,7 +67,7 @@ class UniqueFilename(object):
             setattr(instance, self.original_filename_field, filename)
         parts = filename.split('.')
         extension = parts[-1]
-        directory_path = os.path.normpath(force_text(datetime.datetime.now().strftime(force_str(self.sub_path))))
+        directory_path = os.path.normpath(datetime.datetime.now().strftime(self.sub_path))
         unique_name = "{0}.{1}".format(uuid.uuid4(), extension)
         return os.path.join(directory_path, unique_name)
 
