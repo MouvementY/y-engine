@@ -23,4 +23,8 @@ class Signature(models.Model):
         pass
 
     def __str__(self):
-        return "Projet de {}".format(self.client)
+        return "Signature de {}".format(self.composite_name)
+
+    @property
+    def composite_name(self):
+        return "{} {}".format(self.first_name, self.last_name)
