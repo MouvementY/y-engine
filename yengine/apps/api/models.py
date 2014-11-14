@@ -16,8 +16,11 @@ class Signature(models.Model):
                                  max_length=150)
     email = models.EmailField(_("Email"))
 
+    # TODO fill the image field with the base64 encoded value
     signature_image = models.ImageField(
-        upload_to=UniqueFilename(settings.SIGNATURE_IMAGE_FOLDER))
+        upload_to=UniqueFilename(settings.SIGNATURE_IMAGE_FOLDER),
+        blank=True, null=True)
+    signature_image_data_url = models.TextField()
 
     class Meta:
         pass
