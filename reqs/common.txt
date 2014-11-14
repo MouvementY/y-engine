@@ -14,4 +14,5 @@ django-classy-tags==0.5.1
 Pillow>=2.6,3.0
 
 # API
+django-cors-headers==0.13
 djangorestframework>=2.4,<2.5
