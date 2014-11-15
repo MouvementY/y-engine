@@ -11,7 +11,7 @@ dj-static==0.0.6
 django-classy-tags==0.5.1
 
 # Image engine
-Pillow>=2.6,3.0
+Pillow>=2.6,<3.0
 
 # API
 django-cors-headers==0.13
