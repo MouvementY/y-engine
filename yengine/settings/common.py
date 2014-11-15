@@ -63,6 +63,7 @@ ROOT_URLCONF = 'yengine.urls'
 
 WSGI_APPLICATION = 'wsgi.application'
 
+SITE_ID = 1
 
 # Templates
 # https://docs.djangoproject.com/en/1.7/ref/settings/#template-context-processors
