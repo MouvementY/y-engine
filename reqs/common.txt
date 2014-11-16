@@ -13,6 +13,10 @@ django-classy-tags==0.5.1
 # Image engine
 Pillow>=2.6,<3.0
 
+# Mandrill/Mailchimp
+djrill==1.2.0
+mailsnake==1.6.2
+
 # API
 django-cors-headers==0.13
 djangorestframework>=2.4,<2.5
