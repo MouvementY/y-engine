@@ -9,25 +9,25 @@ from mailsnake import MailSnake
 logger = logging.getLogger(__name__)
 
 
-def add_email_to_mailchimp(email):
+class MailchimpRegistrar(object):
+    _mail_snake = None
 
-    # Check first if the mailchimp key is present.
-    if not hasattr(settings, 'LANDING_MAILCHIMP_API'):
-        logger.error('MailChimp API not present')
-        return
-    mailchimp_api = settings.LANDING_MAILCHIMP_API
+    def __init__(self):
+        if not hasattr(settings, 'MAILCHIMP_API_KEY'):
+            logger.error('MailChimp API key not present')
+        self._mail_snake = MailSnake(settings.MAILCHIMP_API_KEY)
 
-    # Check for mailchimp list.
-    if not hasattr(settings, 'LANDING_MAILCHIMP_LIST'):
-        logger.error('MailChimp List not defined')
-        return
-    mailchimp_list = settings.LANDING_MAILCHIMP_LIST
+    def _register_email(self, email, list_id):
+        self._mail_snake.listSubscribe(id=list_id,
+                                       email_address=email,
+                                       merge_vars={'EMAIL': email},
+                                       double_optin=True,
+                                       update_existing=True)
 
-    # Subscribe user to list.
-    ms = MailSnake(mailchimp_api)
-    ms.listSubscribe(
-        id=mailchimp_list,
-        email_address=email,
-        merge_vars={'EMAIL': email},
-        double_optin=True,
-        update_existing=True)
+    def subscribe_to_events_notification(self, email):
+        list_id = settings.MAILCHIMP_EVENTS_NOTIFICATION_LIST_ID
+        self._register_email(email, list_id)
+
+
+# singleton
+mailchimp_registrar = MailchimpRegistrar()

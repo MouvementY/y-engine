@@ -38,6 +38,13 @@ RAVEN_CONFIG = {
 }
 
 
+# Mandrill/Mailchimp
+
+MAILCHIMP_API_KEY = environ.get('MAILCHIMP_API_KEY', '')
+
+MAILCHIMP_EVENTS_NOTIFICATION_LIST_ID = environ.get('MAILCHIMP_EVENTS_NOTIFICATION_LIST_ID', '')
+
+
 # Logging
 
 LOGGING = {

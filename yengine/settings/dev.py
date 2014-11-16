@@ -32,6 +32,13 @@ if DEBUG:
     )
 
 
+# Mandrill/Mailchimp
+
+MAILCHIMP_API_KEY = ''
+
+MAILCHIMP_EVENTS_NOTIFICATION_LIST_ID = ''
+
+
 # Logging
 
 LOGGING = {

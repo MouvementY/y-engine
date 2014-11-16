@@ -11,7 +11,7 @@ from rest_framework.permissions import AllowAny
 
 from .models import Signature
 from .serializers import SignatureSerializer
-from .utils import add_email_to_mailchimp
+from .utils import mailchimp_registrar
 
 
 class SignatureViewSet(viewsets.ModelViewSet):
@@ -34,13 +34,15 @@ class SubscribeToEventNotificationsView(APIView):
         email = request.DATA.get('email', None)
         if not email:
             return Response({"detail": "Le champ semble si vide..."},
-                status=status.HTTP_400_BAD_REQUEST)
+                            status=status.HTTP_400_BAD_REQUEST)
 
         try:
             validate_email(email)
         except:
             return Response({"detail": "L'adresse email semble invalide"},
-                status=status.HTTP_400_BAD_REQUEST)
+                            status=status.HTTP_400_BAD_REQUEST)
 
-        add_email_to_mailchimp(email)
-        return Response("coucou", status=status.HTTP_201_CREATED)
+        mailchimp_registrar.subscribe_to_events_notification(email)
+        return Response({"detail": "Merci. Vous venez de recevoir un mail "
+                                   "de confirmation"},
+                        status=status.HTTP_201_CREATED)
