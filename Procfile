@@ -1,1 +1,1 @@
-web: newrelic-admin run-program python uwsgi.py.ini | uwsgi --ini -
+web: newrelic-admin run-program uwsgi --ini uwsgi.ini
