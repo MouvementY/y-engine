@@ -7,6 +7,7 @@ from rest_framework import parsers
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.decorators import detail_route, list_route
 from rest_framework.permissions import AllowAny
 
 from .models import Signature
@@ -25,6 +26,11 @@ class SignatureViewSet(viewsets.ModelViewSet):
 
     # TODO implement a proper authentication flow
     permission_classes = (AllowAny,)
+
+    @list_route(methods=['get'])
+    def count(self, request):
+        count = self.queryset.count()
+        return Response(count)
 
 
 class SubscribeToEventNotificationsView(APIView):
