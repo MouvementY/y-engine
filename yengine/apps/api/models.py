@@ -14,7 +14,8 @@ class Signature(models.Model):
                                   max_length=150)
     last_name = models.CharField(_("Nom"),
                                  max_length=150)
-    email = models.EmailField(_("Email"))
+    email = models.EmailField(_("Email"),
+                              unique=True)
 
     # TODO fill the image field with the base64 encoded value
     signature_image = models.ImageField(
