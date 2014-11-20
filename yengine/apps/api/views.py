@@ -16,7 +16,7 @@ from .utils import mailchimp_registrar
 
 
 class SignatureViewSet(viewsets.ModelViewSet):
-    queryset = Signature.objects.all()
+    queryset = Signature.objects.all().order_by('id')
     serializer_class = SignatureSerializer
     parser_classes = (
         parsers.MultiPartParser,
