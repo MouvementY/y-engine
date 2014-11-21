@@ -11,7 +11,7 @@ from rest_framework.decorators import detail_route, list_route
 from rest_framework.permissions import AllowAny
 
 from .models import Signature
-from .serializers import SignatureSerializer
+from .serializers import SignatureSerializer, SignatureCreationSerializer
 from .utils import mailchimp_registrar
 
 
@@ -26,6 +26,11 @@ class SignatureViewSet(viewsets.ModelViewSet):
 
     # TODO implement a proper authentication flow
     permission_classes = (AllowAny,)
+
+    def get_serializer_class(self):
+        if self.action == 'create':
+            return SignatureCreationSerializer
+        return super().get_serializer_class()
 
     @list_route(methods=['get'])
     def count(self, request):
