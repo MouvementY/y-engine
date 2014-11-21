@@ -141,7 +141,12 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
         'apps.api.renderers.LightBrowsableAPIRenderer',
-    )
+    ),
+
+    # Pagination
+    'PAGINATE_BY': 30,
+    'PAGINATE_BY_PARAM': 'page_size',  # Allow client to override, using `?page_size=xxx`.
+    'MAX_PAGINATE_BY': 50,
 }
 
 
