@@ -1,4 +1,5 @@
 from os import environ
+from urllib.parse import urlparse
 
 from .common import *
 
@@ -100,3 +101,12 @@ LOGGING = {
         },
     }
 }
+
+
+# Pusher
+
+PUSHER = urlparse(environ.get('PUSHER_URL', ''))
+PUSHER_KEY = PUSHER.username
+PUSHER_SECRET = PUSHER.password
+PUSHER_HOST = PUSHER.hostname
+PUSHER_APP_ID = PUSHER.path.split('/')[-1]  # last path component

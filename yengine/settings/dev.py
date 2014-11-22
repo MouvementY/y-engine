@@ -1,4 +1,5 @@
 import os
+from urllib.parse import urlparse
 
 from .common import *
 
@@ -90,3 +91,12 @@ LOGGING = {
         },
     }
 }
+
+
+# Pusher
+
+PUSHER = urlparse("http://6f721c613fa6823eb3a5:5464dcf3a8ba9b5400c3@api-eu.pusher.com/apps/97556")
+PUSHER_KEY = PUSHER.username
+PUSHER_SECRET = PUSHER.password
+PUSHER_HOST = PUSHER.hostname
+PUSHER_APP_ID = PUSHER.path.split('/')[-1]  # last path component

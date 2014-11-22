@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     'core',
     'apps.bill',
     'apps.api',
+    'apps.notification',
 )
 
 MIDDLEWARE_CLASSES = (
