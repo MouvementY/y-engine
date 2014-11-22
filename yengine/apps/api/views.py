@@ -10,7 +10,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import detail_route, list_route
 from rest_framework.permissions import AllowAny
 
-from .models import Signature
+from apps.bill.models import Signature
 from .serializers import SignatureSerializer, SignatureCreationSerializer
 from .utils import mailchimp_registrar
 

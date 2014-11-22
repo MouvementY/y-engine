@@ -32,6 +32,7 @@ INSTALLED_APPS = (
     'rest_framework',
 
     'core',
+    'apps.bill',
     'apps.api',
 )
 

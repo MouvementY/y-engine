@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Signature
+from apps.bill.models import Signature
 
 
 class SignatureCreationSerializer(serializers.ModelSerializer):
