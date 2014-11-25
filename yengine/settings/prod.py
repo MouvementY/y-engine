@@ -15,6 +15,7 @@ ALLOWED_HOSTS = (
     # 'engine.mouvementy.org',
 
     'y-engine.herokuapp.com',
+    'y-engine-staging.herokuapp.com',
 )
 
 
