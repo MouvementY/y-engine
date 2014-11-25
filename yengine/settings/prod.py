@@ -25,6 +25,11 @@ DATABASES = {
 }
 
 
+# Redis
+
+REDIS = urlparse(environ.get('REDISCLOUD_URL', ''))
+
+
 # Apps
 
 INSTALLED_APPS += (

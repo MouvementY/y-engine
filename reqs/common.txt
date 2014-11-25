@@ -22,5 +22,4 @@ django-cors-headers==0.13
 djangorestframework>=2.4,<2.5
 
 # Realtime
-# Not yet ready for Python 3 in the pypy registery
-git+git://github.com/pusher/pusher_client_python.git@master#egg=pusher
+redis==2.10.3

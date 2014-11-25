@@ -1,6 +1,9 @@
 # These targets are not files
 .PHONY: contribute travis test lint coverage prepare_assets
 
+fs:
+	foreman start -f Procfile.local
+
 install:
 	pip install -r reqs/dev.txt
 

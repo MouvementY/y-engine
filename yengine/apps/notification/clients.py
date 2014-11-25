@@ -1,20 +1,15 @@
 from django.conf import settings
 
-import pusher
+import redis
 
 
 PUSH_CHANNEL_SIGNATURE = 'signatures'
-PUSH_EVENTS = {
-    PUSH_CHANNEL_SIGNATURE: ['new'],
-}
 
 
 ##
-# Pusher *singleton*
+# Redis client *singleton*
 
-pusher_client = pusher.Pusher(
-  app_id=settings.PUSHER_APP_ID,
-  key=settings.PUSHER_KEY,
-  secret=settings.PUSHER_SECRET,
-  host=settings.PUSHER_HOST,
-)
+redis_conf = settings.REDIS
+redis_client = redis.StrictRedis(host=redis_conf.hostname,
+                                 port=redis_conf.port,
+                                 db=0)

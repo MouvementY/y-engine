@@ -11,7 +11,4 @@ def handle_order_is_saved(sender, instance, created, **kwargs):
     if getattr(instance, '_disable_pusher_notification', False):
         return
 
-    # queue = django_rq.get_queue('default')
-    # queue.enqueue(send_new_signature_notification, instance.id)
-    # TODO use rq
-    send_new_signature_notification(instance.id)
+    send_new_signature_notification(instance)

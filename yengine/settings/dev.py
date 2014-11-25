@@ -33,6 +33,11 @@ if DEBUG:
     )
 
 
+# Redis
+
+REDIS = urlparse('redis://localhost:6379')
+
+
 # Mandrill/Mailchimp
 
 MAILCHIMP_API_KEY = '5d3e2bd361da8960889ae28f670f037f-us6'
