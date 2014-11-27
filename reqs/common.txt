@@ -23,3 +23,6 @@ djangorestframework>=2.4,<2.5
 
 # Realtime
 redis==2.10.3
+
+# Stats dependencies
+python-dateutil==2.2
