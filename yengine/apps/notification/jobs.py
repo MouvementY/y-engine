@@ -12,7 +12,7 @@ def send_new_signature_notification(signature_instance):
     to the right shop
     """
     channel = PUSH_CHANNEL_SIGNATURE
-    new_count = Signature.objects.all().count()
+    new_count = Signature.objects.published().count()
 
     notification_data = {
             'count': new_count,

@@ -22,7 +22,7 @@ from .stats import QuerySetStats
 
 
 class SignatureViewSet(viewsets.ModelViewSet):
-    queryset = Signature.objects.all().order_by('-id')
+    queryset = Signature.objects.published().order_by('-id')
     serializer_class = SignatureSerializer
     parser_classes = (
         parsers.MultiPartParser,
