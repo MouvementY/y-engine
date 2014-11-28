@@ -7,6 +7,7 @@ class SignatureAdmin(admin.ModelAdmin):
     list_display = (
         '__str__',
         'date_created',
+        '_is_published',
     )
     search_fields = (
         'first_name',
@@ -14,6 +15,7 @@ class SignatureAdmin(admin.ModelAdmin):
         'email',
     )
     fields = (
+        'banned',
         'first_name',
         'last_name',
         'email',
@@ -24,6 +26,10 @@ class SignatureAdmin(admin.ModelAdmin):
     readonly_fields = (
         '_get_signature_image',
     )
+
+    def _is_published(self, obj):
+        return not obj.banned
+    _is_published.boolean = True
 
     def _get_signature_image(self, obj):
         return "<img src=\"{}\"/>".format(obj.signature_image_data_url)
