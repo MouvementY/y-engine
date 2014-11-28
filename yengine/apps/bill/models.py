@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from core.utils import UniqueFilename
+from .querysets import SignatureQuerySet
 
 
 class Signature(models.Model):
@@ -22,6 +23,10 @@ class Signature(models.Model):
         upload_to=UniqueFilename(settings.SIGNATURE_IMAGE_FOLDER),
         blank=True, null=True)
     signature_image_data_url = models.TextField()
+
+    banned = models.BooleanField(default=False, db_index=True)
+
+    objects = SignatureQuerySet.as_manager()
 
     class Meta:
         pass
