@@ -7,7 +7,12 @@ from apps.notification.jobs import (
 
 
 @receiver(post_save, sender=Signature)
-def handle_order_is_saved(sender, instance, created, **kwargs):
+def handle_signature_is_saved(sender, instance, created, **kwargs):
+    # not a new signature
+    if not created:
+        # TODO, send the remove signature signal if it has been banned
+        return
+
     if getattr(instance, '_disable_pusher_notification', False):
         return
 
