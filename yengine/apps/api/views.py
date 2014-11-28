@@ -50,11 +50,12 @@ class SignatureViewSet(viewsets.ModelViewSet):
         stats_queryset = QuerySetStats(queryset, 'date_created')
 
         # compute time series on the last week
+        launch = datetime.date(2014, 11, 20)
         today = datetime.date.today()
-        seven_days_ago = today - datetime.timedelta(days=7)
-        week_stats = stats_queryset.time_series(seven_days_ago,
+        interval = request.GET.get('interval', 'hours')
+        week_stats = stats_queryset.time_series(launch,
                                                 today,
-                                                interval='hours')
+                                                interval=interval)
 
         return Response(week_stats)
 
