@@ -22,7 +22,7 @@ class Signature(models.Model):
     signature_image = models.ImageField(
         upload_to=UniqueFilename(settings.SIGNATURE_IMAGE_FOLDER),
         blank=True, null=True)
-    signature_image_data_url = models.TextField()
+    signature_image_data_url = models.TextField(blank=True, null=True)
 
     banned = models.BooleanField(default=False, db_index=True)
 
