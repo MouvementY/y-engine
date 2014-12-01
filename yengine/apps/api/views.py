@@ -51,10 +51,10 @@ class SignatureViewSet(viewsets.ModelViewSet):
 
         # compute time series on the last week
         launch = datetime.date(2014, 11, 20)
-        today = datetime.date.today()
+        tomorrow = datetime.date.today() + datetime.timedelta(days=1)
         interval = request.GET.get('interval', 'hours')
         week_stats = stats_queryset.time_series(launch,
-                                                today,
+                                                tomorrow,
                                                 interval=interval)
 
         return Response(week_stats)
