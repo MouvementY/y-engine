@@ -9,6 +9,6 @@ class LightBrowsableAPIRenderer(BrowsableAPIRenderer):
         context['display_edit_forms'] = False
         return context
 
-    def get_rendered_html_form(self, view, method, request):
+    def get_rendered_html_form(self, data, view, method, request):
         """Overwritten to avoid generating useless db queries"""
         return ""
