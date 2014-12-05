@@ -1,1 +1,1 @@
-web: newrelic-admin run-program uwsgi --ini uwsgi.ini
+web: newrelic-admin run-program waitress-serve --port=$PORT wsgi.application
