@@ -8,7 +8,7 @@ from .querysets import SignatureQuerySet
 
 class Signature(models.Model):
     # Tracking fields
-    date_created = models.DateTimeField(auto_now_add=True)
+    date_created = models.DateTimeField(auto_now_add=True, db_index=True)
     date_updated = models.DateTimeField(auto_now=True)
 
     first_name = models.CharField(_("Prénom"),
