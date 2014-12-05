@@ -116,3 +116,9 @@ PUSHER_KEY = PUSHER.username
 PUSHER_SECRET = PUSHER.password
 PUSHER_HOST = PUSHER.hostname
 PUSHER_APP_ID = PUSHER.path.split('/')[-1]  # last path component
+
+
+# Loader.io
+
+LOADERIO_ENABLED = bool(int(environ.get('LOADERIO_ENABLED', '0')))
+LOADERIO_TOKEN = environ.get('LOADERIO_TOKEN', '')
