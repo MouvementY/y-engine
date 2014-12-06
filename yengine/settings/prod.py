@@ -100,6 +100,12 @@ LOGGING = {
             'level':'ERROR',
         },
 
+        'rest_framework': {
+            'handlers': ['console', 'sentry'],
+            'level': 'WARNING',
+            'propagate': False,
+        },
+
         'apps': {
             'handlers': ['console', 'sentry'],
             'level': 'WARNING',
