@@ -24,7 +24,12 @@ class Signature(models.Model):
         blank=True, null=True)
     signature_image_data_url = models.TextField(blank=True, null=True)
 
+    # Keep the control if there is an explicit image sent
     banned = models.BooleanField(default=False, db_index=True)
+
+    # Collect the ip address to avoid usage abuses and be able to restore
+    # the system in a valid state in case of abuse
+    ip_address = models.GenericIPAddressField(blank=True, null=True)
 
     objects = SignatureQuerySet.as_manager()
 

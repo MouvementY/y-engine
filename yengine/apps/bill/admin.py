@@ -16,6 +16,7 @@ class SignatureAdmin(admin.ModelAdmin):
     )
     fields = (
         'banned',
+        'ip_address',
         'first_name',
         'last_name',
         'email',

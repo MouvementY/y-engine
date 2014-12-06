@@ -16,6 +16,7 @@ from rest_framework.decorators import (
     list_route,
     permission_classes)
 from rest_framework.permissions import AllowAny, IsAdminUser
+from ipware.ip import get_real_ip
 
 from apps.bill.models import Signature
 from apps.bill.pagination import SinceDatePaginator
@@ -78,6 +79,10 @@ class SignatureViewSet(viewsets.ModelViewSet):
             })
 
         return page
+
+    def perform_create(self, serializer):
+        ip = get_real_ip(self.request)
+        serializer.save(ip_address=ip)
 
     @list_route(methods=['get'])
     def count(self, request):

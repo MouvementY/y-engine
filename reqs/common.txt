@@ -18,6 +18,7 @@ djrill==1.2.0
 mailsnake==1.6.2
 
 # API
+django-ipware>=0.1,<0.2
 django-cors-headers==0.13
 djangorestframework>=3.0,<3.1
 
