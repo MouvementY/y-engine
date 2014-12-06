@@ -12,7 +12,7 @@ signature_list = SignatureViewSet.as_view({
 })
 
 urlpatterns = patterns('',
-    url(r'^signatures/', signature_list, name='signature-list'),
-    url(r'^events/subscribe/', SubscribeToEventNotificationsView.as_view()),
+    url(r'^signatures/$', signature_list, name='signature-list'),
+    url(r'^events/subscribe/$', SubscribeToEventNotificationsView.as_view()),
     url(r'^auth/', include('rest_framework.urls', namespace='rest_framework')),
 )
