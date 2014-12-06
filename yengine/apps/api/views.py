@@ -40,6 +40,7 @@ class SignatureViewSet(viewsets.ModelViewSet):
 
     # TODO implement a proper authentication flow
     permission_classes = (AllowAny,)
+    throttle_scope = 'signatures'
 
     def get_serializer_class(self):
         if self.action == 'create':
@@ -102,6 +103,7 @@ class SignatureViewSet(viewsets.ModelViewSet):
 
 class SubscribeToEventNotificationsView(APIView):
     permission_classes = (AllowAny,)
+    throttle_scope = 'subscriptions'
 
     def post(self, request, *args, **kwargs):
         email = request.DATA.get('email', None)

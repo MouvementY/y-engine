@@ -145,6 +145,15 @@ REST_FRAMEWORK = {
         'apps.api.renderers.LightBrowsableAPIRenderer',
     ),
 
+    # Throttling
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.ScopedRateThrottle',
+    ),
+    'DEFAULT_THROTTLE_RATES': {
+        'subscriptions': '100/day',
+        'signatures': '1000/day',
+    },
+
     # Pagination
     'PAGINATE_BY': 30,
     'PAGINATE_BY_PARAM': 'page_size',  # Allow client to override, using `?page_size=xxx`.
