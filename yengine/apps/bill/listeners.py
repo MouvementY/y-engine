@@ -3,7 +3,7 @@ import logging
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 
-from redis.exceptions import ConnectionError
+from redis.exceptions import RedisError, ConnectionError
 
 from apps.bill.models import Signature
 from apps.notification.jobs import (
@@ -24,5 +24,5 @@ def handle_signature_is_saved(sender, instance, created, **kwargs):
 
     try:
         send_new_signature_notification(instance)
-    except ConnectionError as exc:
+    except RedisError as exc:
         logger.error(exc)
