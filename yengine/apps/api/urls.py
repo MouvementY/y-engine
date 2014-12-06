@@ -6,11 +6,13 @@ from .views import (
     SubscribeToEventNotificationsView)
 
 
-router = SecuredDefaultRouter()
-router.register(r'signatures', SignatureViewSet)
+signature_list = SignatureViewSet.as_view({
+    'get': 'list',
+    'post': 'create',
+})
 
 urlpatterns = patterns('',
-    url(r'^', include(router.urls)),
+    url(r'^signatures/', signature_list, name='signature-list'),
     url(r'^events/subscribe/', SubscribeToEventNotificationsView.as_view()),
     url(r'^auth/', include('rest_framework.urls', namespace='rest_framework')),
 )
