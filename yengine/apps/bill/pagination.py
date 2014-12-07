@@ -4,6 +4,7 @@ import datetime
 
 from django.core.paginator import Paginator, InvalidPage, Page, EmptyPage
 from django.db.models import Max, Count, Q, F
+from django.utils.timezone import make_aware, get_current_timezone
 
 
 class SinceDatePaginator(Paginator):
@@ -27,7 +28,14 @@ class SinceDatePaginator(Paginator):
             timestamp = int(timestamp)
         except ValueError as exc:
             raise InvalidPage(exc)
-        return datetime.datetime.fromtimestamp(timestamp)
+
+        # convert the timestamp to a date object
+        d = datetime.datetime.fromtimestamp(timestamp)
+
+        # ensure an aware datetime object
+        d = make_aware(d, get_current_timezone())
+
+        return d
 
     def page(self, date):
         object_list = self.object_list
