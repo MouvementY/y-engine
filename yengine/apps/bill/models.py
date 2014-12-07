@@ -18,6 +18,9 @@ class Signature(models.Model):
     email = models.EmailField(_("Email"),
                               unique=True)
 
+    # Accept or not to receive an email on progress
+    optin = models.BooleanField(default=True)
+
     # TODO fill the image field with the base64 encoded value
     signature_image = models.ImageField(
         upload_to=UniqueFilename(settings.SIGNATURE_IMAGE_FOLDER),

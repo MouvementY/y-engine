@@ -20,6 +20,7 @@ class SignatureAdmin(admin.ModelAdmin):
         'first_name',
         'last_name',
         'email',
+        'optin',
 
         'signature_image_data_url',
         '_get_signature_image',
