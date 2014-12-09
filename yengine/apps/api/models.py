@@ -8,8 +8,8 @@ class Blacklist(models.Model):
     readonly = models.BooleanField("Readonly authorize",
                                    default=True)
 
-    def __self__(self):
-        return "IP: %s" % self.ip_address
-
     class Meta:
         pass
+
+    def __str__(self):
+        return "IP: %s" % self.ip_address
