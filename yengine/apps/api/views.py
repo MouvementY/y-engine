@@ -20,6 +20,7 @@ from ipware.ip import get_real_ip
 
 from apps.bill.models import Signature
 from apps.bill.pagination import SinceDatePaginator
+from .permissions import BlacklistPermission
 from .serializers import SignatureSerializer, SignatureCreationSerializer
 from .pagination import DatePaginationSerializer
 from .utils import mailchimp_registrar
@@ -39,8 +40,7 @@ class SignatureViewSet(viewsets.ModelViewSet):
     paginate_by = 64
     page_kwarg = 'before'
 
-    # TODO implement a proper authentication flow
-    permission_classes = (AllowAny,)
+    permission_classes = (BlacklistPermission, AllowAny,)
     throttle_scope = 'signatures'
 
     def get_serializer_class(self):
