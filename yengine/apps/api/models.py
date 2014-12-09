@@ -12,4 +12,10 @@ class Blacklist(models.Model):
         pass
 
     def __str__(self):
-        return "IP: %s" % self.ip_address
+        return "IP: {} ({})".format(self.ip_address, self.mode)
+
+    @property
+    def mode(self):
+        if self.readonly:
+            return "readonly"
+        return "strict"
