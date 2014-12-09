@@ -16,7 +16,8 @@ def send_new_signature_notification(signature_instance):
 
     notification_data = {
             'count': new_count,
-            'signature': signature_instance.signature_image_data_url
+            'signature': signature_instance.signature_image_data_url,
+            'name': signature_instance.first_name,
         }
 
     redis_client.publish("notification {}".format(channel),
