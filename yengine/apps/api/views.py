@@ -36,7 +36,7 @@ class SignatureViewSet(viewsets.ModelViewSet):
     )
     pagination_serializer_class = DatePaginationSerializer
     paginator_class = SinceDatePaginator
-    paginate_by = 30
+    paginate_by = 64
     page_kwarg = 'before'
 
     # TODO implement a proper authentication flow
