@@ -9,6 +9,7 @@ from django.http import Http404
 from rest_framework import viewsets
 from rest_framework import parsers
 from rest_framework import status
+from rest_framework import exceptions
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import (
@@ -42,6 +43,18 @@ class SignatureViewSet(viewsets.ModelViewSet):
 
     permission_classes = (BlacklistPermission, AllowAny,)
     throttle_scope = 'signatures'
+
+    def permission_denied(self, request):
+        """
+        If request is not permitted, determine what kind of exception to raise.
+        """
+        humoristic_message = str("Merci pour ta production artistique, nous "
+                                 "gardons tout cela pour une prochaine "
+                                 "initiative plus en lien avec le message que "
+                                 "tu essayes de porter. N'abandonne pas! Garde "
+                                 "espoir de voir ton art un jour reconnu. "
+                                 "Bisous. Y")
+        raise exceptions.PermissionDenied(detail=humoristic_message)
 
     def get_serializer_class(self):
         if self.action == 'create':
