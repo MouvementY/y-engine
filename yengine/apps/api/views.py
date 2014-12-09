@@ -51,9 +51,7 @@ class SignatureViewSet(viewsets.ModelViewSet):
         humoristic_message = str("Merci pour ta production artistique, nous "
                                  "gardons tout cela pour une prochaine "
                                  "initiative plus en lien avec le message que "
-                                 "tu essayes de porter. N'abandonne pas! Garde "
-                                 "espoir de voir ton art un jour reconnu. "
-                                 "Bisous. Y")
+                                 "tu essayes de porter. Y")
         raise exceptions.PermissionDenied(detail=humoristic_message)
 
     def get_serializer_class(self):
