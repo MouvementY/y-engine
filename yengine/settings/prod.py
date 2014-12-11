@@ -21,8 +21,11 @@ ALLOWED_HOSTS = (
 
 # Databases
 
+default_database_conf = dj_database_url.config(default='')
+default_database_conf['CONN_MAX_AGE'] = 60
+
 DATABASES = {
-    'default': dj_database_url.config(default='')
+    'default': default_database_conf
 }
 
 
