@@ -1,8 +1,8 @@
 -r common.txt
 
 ## Server
-#uwsgi>=2.0,<2.1
-waitress>=0.8,<0.9
+uwsgi>=2.0,<2.1
+#waitress>=0.8,<0.9
 
 ## Monitoring
 newrelic>=2.32,<2.33
