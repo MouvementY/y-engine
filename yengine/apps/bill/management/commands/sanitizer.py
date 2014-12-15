@@ -3,6 +3,7 @@ from optparse import make_option
 
 from django.core.management import BaseCommand
 
+from core.utils import queryset_iterator
 from apps.bill.models import Signature
 from apps.bill.filters import ImageConvertor, DotSignatureIdentifierProcessor
 
@@ -29,7 +30,8 @@ class Command(BaseCommand):
         processor = DotSignatureIdentifierProcessor(threshold=0.01)
 
         # start by the new ones, for a fast and bright effect
-        for s in Signature.objects.all().order_by('-id'):
+        signature_queryset = Signature.objects.all().order_by('-id')
+        for s in queryset_iterator(signature_queryset, chunksize=100, reverse=True):
 
             # if has already been sanitized
             if s.signature_image_data_url is None:
