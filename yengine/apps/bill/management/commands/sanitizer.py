@@ -22,7 +22,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         if options['force'] is False:
-            logger.warning(" !!! Not saving the results to the database. use the option --force for persistance.")
+            print(" !!! Not saving the results to the database. use the option --force for persistance.")
 
         convertor = ImageConvertor()
 
@@ -42,7 +42,7 @@ class Command(BaseCommand):
                 img = convertor.image_from_data_uri(s.signature_image_data_url)
             except ValueError:
                 # clean the wrong format
-                logger.info("clean format #{} {}".format(s.id, s))
+                print("clean format #{} {}".format(s.id, s))
                 img = None
                 s.signature_image_data_url = None
                 if options['force'] is True:
@@ -53,7 +53,7 @@ class Command(BaseCommand):
 
             ratio = processor.get_colored_pixel_ratio(img)
             if ratio < processor.threshold:
-                logger.info("clean dot signature #{} {}".format(s.id, s))
+                print("clean dot signature #{} {}".format(s.id, s))
                 s.signature_image_data_url = None
                 if options['force'] is True:
                     s.save()
