@@ -17,6 +17,7 @@ class SignatureAdmin(admin.ModelAdmin):
     )
     fields = (
         'banned',
+        'displayed',
         'ip_address',
         'first_name',
         'last_name',
@@ -31,7 +32,7 @@ class SignatureAdmin(admin.ModelAdmin):
     )
 
     def _is_published(self, obj):
-        return not obj.banned
+        return (obj.displayed and not obj.banned)
     _is_published.boolean = True
 
     def _get_signature_image(self, obj):

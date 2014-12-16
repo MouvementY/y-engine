@@ -24,7 +24,9 @@ class Signature(models.Model):
     signature_image_data_url = models.TextField(blank=True, null=True)
 
     # Keep the control if there is an explicit image sent
+    # or if the user doesn't want his signature to be public
     banned = models.BooleanField(default=False, db_index=True)
+    displayed = models.BooleanField(default=True, db_index=True)
 
     # Collect the ip address to avoid usage abuses and be able to restore
     # the system in a valid state in case of abuse
