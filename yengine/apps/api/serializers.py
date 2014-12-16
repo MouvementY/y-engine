@@ -8,6 +8,13 @@ class SignatureCreationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Signature
+        fields = (
+            'first_name',
+            'last_name',
+            'email',
+            'optin',
+            'signature_image_data_url',
+        )
 
     def validate_signature_image_data_url(self, value):
         """
