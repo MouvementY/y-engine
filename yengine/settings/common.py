@@ -33,6 +33,7 @@ INSTALLED_APPS = (
 
     'core',
     'apps.bill',
+    'apps.news',
     'apps.api',
     'apps.notification',
 )
@@ -152,6 +153,7 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
         'subscriptions': '100/day',
         'signatures': '1000/day',
+        'news_posts': '100/day',
     },
 
     # Pagination

@@ -19,10 +19,14 @@ from rest_framework.decorators import (
 from rest_framework.permissions import AllowAny, IsAdminUser
 from ipware.ip import get_real_ip
 
+from apps.news.models import Post
 from apps.bill.models import Signature
 from apps.bill.pagination import SinceDatePaginator
 from .permissions import BlacklistPermission
-from .serializers import SignatureSerializer, SignatureCreationSerializer
+from .serializers import (
+    SignatureSerializer,
+    SignatureCreationSerializer,
+    PostSerializer)
 from .pagination import DatePaginationSerializer
 from .utils import mailchimp_registrar
 from .stats import QuerySetStats
@@ -137,3 +141,12 @@ class SubscribeToEventNotificationsView(APIView):
         return Response({"detail": "Merci. Vous venez de recevoir un mail "
                                    "de confirmation"},
                         status=status.HTTP_201_CREATED)
+
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.published().order_by('-date_published')
+    serializer_class = PostSerializer
+    paginate_by = 5
+
+    permission_classes = (AllowAny,)
+    throttle_scope = 'news_posts'

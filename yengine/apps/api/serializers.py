@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from apps.news.models import Post
 from apps.bill.models import Signature
 from apps.bill.filters import ImageConvertor, DotSignatureIdentifierProcessor
 
@@ -46,3 +47,10 @@ class SignatureSerializer(serializers.ModelSerializer):
         model = Signature
         fields = ('first_name', 'signature_image_data_url',)
         read_only_fields = ('first_name', 'signature_image_data_url',)
+
+
+class PostSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Post
+        fields = ('title', 'text', 'link', 'date_published',)
