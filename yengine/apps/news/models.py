@@ -18,6 +18,9 @@ class Post(models.Model):
                             blank=True, null=True)
     link = models.URLField(_("Lien"),
                            blank=True, null=True)
+    link_title = models.CharField(_("Titre du lien"),
+                                  max_length=100,
+                                  blank=True, null=True)
 
     objects = PostQuerySet.as_manager()
 
